@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+		<!-- Title here -->
+		<title>Acceuil</title>
+		<!-- Description, Keywords and Author -->
+		<meta charset="UTF-8"/>
+		<meta name="description" content="Your description"/>
+		<meta name="keywords" content="Your,Keywords"/>
+		<meta name="author" content="ResponsiveWebInc"/>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		<head th:replace="fragments/css :: css"></head>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="#"/>
+	</head>
+	
+	<body>
+
+		<div class="outer">
+			
+			<!-- Sidebar starts -->
+			<div th:replace="fragments/sidebar :: sidebar"></div>
+			<!-- Sidebar ends -->
+			
+			<!-- Mainbar starts -->
+			<div class="mainbar">
+			
+				<!-- Mainbar head starts -->
+				<div th:replace="fragments/mainbar :: mainbar"></div>
+				<!-- Mainbar head ends -->
+				
+				<div class="main-content">
+					<div class="container">
+										
+						 <!-- Page content end -->
+						
+					</div>
+				</div>
+				
+			</div>
+			<!-- Mainbar ends -->
+			
+			<div class="clearfix"></div>
+		</div>
+		
+		<body th:replace="fragments/js :: js"></body>
+		
+	</body>	
+
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	
+<!-- Mirrored from ashobiz.asia/wrapbootstrap/barnie17/charts.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Oct 2016 21:37:12 GMT -->
+<head>
+		<!-- Title here -->
+		<title>Graphe de Progression </title>
+		<!-- Description, Keywords and Author -->
+		<meta name="description" content="Your description"/>
+		<meta name="keywords" content="Your,Keywords"/>
+		<meta name="author" content="ResponsiveWebInc"/>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		<head th:replace="fragments/css :: css"></head>
+		
+		<link rel="shortcut icon" href="#"/>
+	</head>
+	
+	<body>
+
+		<div class="outer">
+			
+			<!-- Sidebar starts -->
+			<div th:replace="fragments/sidebar :: sidebar"></div>
+			<!-- Sidebar ends -->
+			
+			<!-- Mainbar starts -->
+			<div class="mainbar">
+			
+				<!-- Mainbar head starts -->
+				<div th:replace="fragments/mainbar :: mainbar"></div>
+				
+				<!-- Mainbar head ends -->
+				
+				<div class="main-content">
+					<div class="container">
+										
+						<div class="page-content">
+						
+							<!-- Heading -->
+							<div class="single-head">
+								<!-- Heading -->
+								<h3 class="pull-left"><i class="fa fa-signal lblue"></i> Charts</h3>
+								<!-- Bread crumbs -->
+								<div class="breads pull-right">
+									<strong>Nav</strong> : <a href="#">Home</a> / <a href="#">Sign</a> / Home
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							
+							<!-- Chart page -->
+							<div class="page-chart">
+								<!-- Widget chart -->
+								
+								<div class="widget">
+									<div class="widget-head br-lblue">
+										<h3 class="pull-left"><i class="fa fa-bar-chart-o"></i> Latest Report</h3>
+										<div class="pull-right">
+											<!-- Nav tabs -->
+											<ul>
+											  <li><a href="#c-one" data-toggle="tab" class="btn btn-default btn-xs">Visitors</a>&nbsp;</li>
+											  
+											</ul>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+									<div class="widget-body">
+									
+										<!-- Tab panes -->
+										<div class="tab-content">
+											<div class="tab-pane active in fade" id="c-one">
+												<!-- Chart one --> 
+												<div class="chart-one">
+													<!-- Line chart placeholder -->
+													<div id="m-line-chart"></div>
+												</div>
+											</div>
+											
+										</div>
+										
+									</div>
+								</div>
+								<div class="widget chart-widget">
+									<!-- Widget head -->
+									<div class="widget-head br-red">
+										<h3><i class="fa fa-signal"></i> Plot Chart</h3>
+									</div>
+									<!-- Widget body -->
+									<div class="widget-body">
+										<!-- Chart container -->
+										<div class="chart-container">
+											<div id="plot-chart" class="chart-placeholder"></div>
+										</div>
+									</div>
+								</div>
+								<!-- Widget chart -->
+								 
+								
+								<!-- Widget chart -->
+								
+								
+								<!-- Widget chart -->
+								
+								
+								<!-- Widget chart -->
+							
+							</div> <!-- page chart end -->
+						</div> <!-- page content end -->
+						
+					</div>
+				</div>
+				
+			</div>
+			<!-- Mainbar ends -->
+			
+			<div class="clearfix"></div>
+		</div>
+		
+		
+		<body th:replace="fragments/js :: js"></body>
+		<script th:inline="javascript">
+        /* <![CDATA[ */
+			/* Curve chart */
+			
+	$(function() {
+			
+			var alldoc=[[${doccharts}]];
+			var options = {
+               series: {
+                  lines: {
+                     show: true, fill: true, lineWidth:1, fillColor: { colors: [ { opacity: 0.05 }, { opacity: 0.15}] }
+                  },
+                  points: {
+                     show: true, fill: true, lineWidth:2, radius:3, fillColor: "#fff"
+                  },
+				  shadowSize: 0
+               },
+               colors :["#32c8de","#51d466"],
+               grid: {
+                  hoverable: true, color: "#bbb", backgroundColor:"#fff" ,borderWidth:1, borderColor:"#e8e8e8", labelMargin:10
+               },
+               xaxis: {
+				  ticks:12,
+                  font: {
+                        size: 11,
+                        color: "#aaa"
+                    }
+               },
+               yaxis: {
+				  ticks: 4,
+                  font: {
+                        size: 11,
+                        color: "#aaa"
+                    }
+               },
+			   legend: {
+				  backgroundOpacity:0,
+				  noColumns:2,
+				  labelBoxBorderColor: "#fff"
+			   }
+            };
+			
+			$("<div id='tooltip'></div>").css({
+				position: "absolute",
+				display: "none",
+				"border-radius":"5px",
+				padding: "0px 5px",
+				color:"#999",
+				"font-size":"11px",
+				"background-color": "#fff",
+				"border":"1px solid #ccc"
+			}).appendTo("body");
+
+			$("#m-line-chart").bind("plothover", function (event, pos, item) {
+					if (item) {
+						var x = item.datapoint[0].toFixed(2),
+							y = item.datapoint[1].toFixed(2);
+
+						$("#tooltip").html(x + ", " + y)
+							.css({top: item.pageY+5, left: item.pageX+5})
+							.fadeIn(200);
+					} else {
+						$("#tooltip").hide();
+					}
+			});
+
+			
+            <!-- Actual plotting -->
+            $.plot("#m-line-chart", alldoc, options);
+         });
+        
+			/* Curve chart ends */
+			
+			
+			$(function() {
+					/* Chart data #1 */
+					var d1 = [[0, 3], [1, 2.5], [2, 3.2], [3, 4.5],[4, 6.5], [5, 5], [6, 6], [7, 6],[8, 8], [9, 7], [10, 5], [11, 2], [12, 3]];
+					var d2 = [[0, 4], [1, 2], [2, 3], [3, 5],[4, 6], [5, 3], [6, 8], [7, 6],[8, 8], [9, 7], [10, 7], [11, 8], [12, 9]];
+					var d3 = [[0, 5], [1, 5], [2, 2], [3, 4],[4, 5], [5, 4], [6, 7], [7, 6],[8, 8], [9, 7], [10, 5], [11, 8], [12, 9]];
+					var alldoc=[[${alldoccharts}]];
+					var options = {
+						series: {
+						  lines: {
+							 show: true, fill: true, lineWidth:1, fillColor: { colors: [ { opacity: 0.1 }, { opacity: 0.35}] }
+						  },
+						  points: {
+							 show: true, fill: true, lineWidth:2, radius:3, fillColor: "#fff"
+						  },
+						  shadowSize: 0
+					   },
+						colors :["#f75353 "],
+					   grid: {
+						  hoverable: true, color: "#aaa", backgroundColor:"#fff" ,borderWidth:1, borderColor:"#ddd", labelMargin:10
+					   },
+					   xaxis: {
+						  ticks: 10,
+						  font: {
+								size: 12,
+								color: ["#9a9a9a"]
+							}
+					   },
+					   yaxis: {
+						  ticks: 8,
+						  font: {
+								size: 12,
+								color: ["#9a9a9a"]
+							}
+					   }, 
+					   legend: {
+						  backgroundOpacity:0,
+						  noColumns:2,
+						  labelBoxBorderColor: "#ddd"
+					   }
+					};
+					
+					$("<div id='tooltip'></div>").css({
+						position: "absolute",
+						display: "none",
+						"border-radius":"5px",
+						padding: "5px 5px",
+						color:"#999",
+						"font-size":"11px",
+						"background-color": "#fff",
+						"border":"1px solid #ccc"
+					}).appendTo("body");
+
+					$("#plot-chart").bind("plothover", function (event, pos, item) {
+							if (item) {
+								var x = item.datapoint[0].toFixed(2),
+									y = item.datapoint[1].toFixed(2);
+
+								$("#tooltip").html(x + ", " + y)
+									.css({top: item.pageY+5, left: item.pageX+5})
+									.fadeIn(200);
+							} else {
+								$("#tooltip").hide();
+							}
+					});
+
+					$.plot("#plot-chart", alldoc, options);
+				 });
+			
+			/* ]]> */
+		</script>
+		
+	</body>	
+
+<!-- Mirrored from ashobiz.asia/wrapbootstrap/barnie17/charts.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Oct 2016 21:37:12 GMT -->
+</html>

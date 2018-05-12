@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<div class="sidebar" th:fragment="sidebar">
+
+    <div class="sidey">
+
+        <!-- Logo -->
+        <div class="logo">
+            <h1>
+                <a href="index-2.html"><i class="fa fa-desktop br-red"></i>
+                    SuiviDoc <span>It's Legendary</span></a>
+            </h1>
+        </div>
+
+        <!-- Sidebar navigation starts -->
+
+        <!-- Responsive dropdown -->
+        <div class="sidebar-dropdown">
+            <a href="#" class="br-red"><i class="fa fa-bars"></i></a>
+        </div>
+
+        <div class="side-nav">
+
+            <div class="side-nav-block">
+                <!-- Sidebar heading -->
+                <h4>Main</h4>
+                <!-- Sidebar links -->
+                <ul class="list-unstyled">
+                    <li><a href=""><i class="fa fa-desktop"></i> Tableau de
+                        bord</a></li>
+
+                    <div th:switch="${currentActeur.acteur.role}">
+                        <p th:case="${T(ma.uit.doctorants.models.Role).ADMIN}">
+                        <li class="has_submenu"><a href=""><i
+                                class="fa fa-graduation-cap"></i> Doctorant <span
+                                class="nav-caret fa fa-caret-down"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a th:href="@{'/professeur/Encadrant/add/doctorant'}"><i
+                                        class="fa fa-angle-double-right"></i> Ajouter </a></li>
+                                <li><a th:href="@{'/professeur/Encadrant/Liste/doctorant'}"><i
+                                        class="fa fa-angle-double-right"></i>liste Doctrants </a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="has_submenu"><a href=""><i class="fa fa-file"></i>
+                            Papier <span class="nav-caret fa fa-caret-down"></span></a> <!-- Submenu -->
+                            <ul class="list-unstyled">
+                                <li><a th:href="@{'/professeur/Encadrant/add/papier'}"><i
+                                        class="fa fa-angle-double-right"></i> Ajouter</a></li>
+                                <li><a th:href="@{'/professeur/Encadrant/Liste/Papier'}"><i
+                                        class="fa fa-angle-double-right"></i>Liste d'Avancement </a></li>
+                                <li><a
+                                        th:href="@{'/professeur/Encadrant/Liste/Papier/Remarque des Expertises'}"><i
+                                        class="fa fa-angle-double-right"></i>les Remarque</a></li>
+                                <li><a
+                                        th:href="@{'/professeur/Encadrant/Liste/Papier/Publication du Journal'}"><i
+                                        class="fa fa-angle-double-right"></i>les journaux</a></li>
+                                <li><a
+                                        th:href="@{'/professeur/Encadrant/Liste/Papier/Publication de Conférence'}"><i
+                                        class="fa fa-angle-double-right"></i>les conférences</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has_submenu"><a href=""><i class="fa fa-check"></i>
+                            Valider <span class="nav-caret fa fa-caret-down"></span></a> <!-- Submenu -->
+                            <ul class="list-unstyled">
+                                <li><a
+                                        th:href="@{'/professeur/Encadrant/EtatAvancement/Liste/Papier'}"><i
+                                        class="fa fa-angle-double-right"></i> Etat d'avancement</a></li>
+                                <li><a
+                                        th:href="@{'/professeur/Encadrant/RapportActivite/Liste/Papier'}"><i
+                                        class="fa fa-angle-double-right"></i> Rapport d'Activité</a></li>
+                            </ul>
+                        </li>
+
+                        </p>
+                        <p th:case="${T(ma.uit.doctorants.models.Role).USER}">
+                        <li class="has_submenu"><a href=""><i class="fa fa-file"></i>
+                            Papier <span class="nav-caret fa fa-caret-down"></span></a> <!-- Submenu -->
+                            <ul class="list-unstyled">
+                                <li><a th:href="@{'/doctorant/add/papier'}"><i
+                                        class="fa fa-angle-double-right"></i> Ajouter</a></li>
+                                <li><a th:href="@{'/doctorant/Liste/Papier'}"><i
+                                        class="fa fa-angle-double-right"></i>Liste d'Avancement </a></li>
+                                <li><a th:href="@{'/doctorant/Liste/Papier/Remarque des Expertises'}"><i
+                                        class="fa fa-angle-double-right"></i>les Remarque</a></li>
+                                <li><a th:href="@{'/doctorant/Liste/Papier/Publication du Journal'}"><i
+                                        class="fa fa-angle-double-right"></i>les journaux</a></li>
+                                <li><a th:href="@{'/doctorant/Liste/Papier/Publication de Conférence'}"><i
+                                        class="fa fa-angle-double-right"></i>les conférences</a></li>
+                            </ul>
+                        </li>
+                        </p>
+                        <p th:case="${T(ma.uit.doctorants.models.Role).ADMIN}">
+                        <div class="side-nav-block">
+                            <h4>Agenda</h4>
+                            <ul class="list-unstyled">
+                                <li><a th:href="@{'/professeur/Encadrant/Agenda'}"><i class="fa fa-calendar"></i>
+                                    Calendrier</a>
+                                </li>
+                            </ul>
+                        </div>
+                        </p>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Sidebar navigation ends -->
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<div class="main-head" th:fragment="mainbar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-4 col-xs-6">
+					<!-- Page title -->
+					<h2>
+						<i class="fa fa-desktop lblue"></i> Tableau de bord
+					</h2>
+				</div>
+
+				<div class="col-md-3 col-sm-4 hidden-xs"></div>
+
+				<div class="col-md-3 col-sm-4 hidden-xs">
+					<!-- Notifications -->
+
+					<div class="clearfix"></div>
+				</div>
+
+
+				<div class="col-md-3 hidden-sm hidden-xs">
+					<!-- Head user -->
+					<div class="head-user dropdown pull-right">
+						<a href="#" data-toggle="dropdown" id="profile"> <i
+							class="fa fa-user"></i> <span
+							th:text="${currentActeur.acteur.nom}" />&nbsp;<span
+							th:text="${currentActeur.acteur.prenom}" /> <span
+							class="label label-danger">5</span> <i class="fa fa-caret-down"></i>
+						</a>
+						<!-- Dropdown -->
+						<ul class="dropdown-menu" aria-labelledby="profile">
+							<li><div th:switch="${currentActeur.acteur.role}">
+									<p th:case="${T(ma.uit.doctorants.models.Role).ADMIN}">
+										
+									</p>
+									<p th:case="${T(ma.uit.doctorants.models.Role).USER}">
+										<a
+															th:href="@{'/doctorant/update-{id}'(id=${currentActeur.acteur.cin})}"
+															th:attr="name=${currentActeur.acteur.cin}">
+										Afficher/modifier
+											le profil 
+										</a>
+									</p>
+								</div></li>
+							<li th:if="${currentActeur}">
+								<form id="myForm" th:action="@{/logout}" method="post">
+									<a onclick="document.getElementById('myForm').submit();">Sing
+										out</a>
+								</form>
+							</li>
+						</ul>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

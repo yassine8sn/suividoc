@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	
+<!-- Mirrored from ashobiz.asia/wrapbootstrap/barnie17/form-validate.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Oct 2016 21:38:01 GMT -->
+<head>
+		<!-- Title here -->
+		<title>Ajouter L'Etat D'avancement</title>
+		<!-- Description, Keywords and Author -->
+		<meta charset="UTF-8"/>
+		<meta name="description" content="Your description"/>
+		<meta name="keywords" content="Your,Keywords"/>
+		<meta name="author" content="ResponsiveWebInc"/>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		<head th:replace="fragments/css :: css"></head>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="#"/>
+	</head>
+	
+	<body>
+
+		<div class="outer">
+			
+			<!-- Sidebar starts -->
+			<div th:replace="fragments/sidebar :: sidebar"></div>
+			<!-- Sidebar ends -->
+			
+			<!-- Mainbar starts -->
+			<div class="mainbar">
+			
+				<!-- Mainbar head starts -->
+				<div th:replace="fragments/mainbar :: mainbar"></div>
+				<!-- Mainbar head ends -->
+				
+				<div class="main-content">
+					<div class="container">
+										
+						<div class="page-content">
+						
+							<!-- Heading -->
+							<div class="single-head">
+								<!-- Heading -->
+								<h3 class="pull-left"><i class="fa fa-graduation-cap red"></i>Ajouter L'Etat D'avancement</h3>
+								<!-- Bread crumbs -->
+								<div class="breads pull-right">
+									<strong>Nav</strong> : <a href="#">Accueil</a> / <a href="#">Ajout</a> 
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div th:if="${error}">
+									<div class="alert alert-warning alert-dismissable">
+												<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+												<strong>vérifiez !</strong> le problème dans la zone du Fichier .  
+									</div>
+									</div>
+							<!-- Form page -->
+							<div class="page-form validate-form" th:fragment="addPAPIER">
+									
+                                    <form  class="form-horizontal" method="POST" th:object="${docAddPapier}" th:action="@{/professeur/Encadrant/add/papier}"  enctype="multipart/form-data">
+									
+									<div class="form-group">
+										<label for="titre" class="control-label col-lg-3">Titre :</label>
+										<div class="col-lg-9">
+											<input id="titre" th:field="*{titre}" required="required" oninvalid="this.setCustomValidity('Zone text ne peut pas etre vide.')" class="form-control" type="text" placeholder="Titre" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-3 control-label">Description : </label>
+										<div class="col-lg-9">
+											<textarea class="form-control" rows="2" th:field="*{description}" placeholder="Description ..."></textarea>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="exampleInputFile" class="col-lg-3 control-label">Fichier à télécharger :</label>
+										<div class="col-lg-9">
+											<input type="file" required="required" oninvalid="this.setCustomValidity('Cliquez pour télécharger votre fichier. (Max 25MB)')"  id="exampleInputFile" name="file"/>
+											<p class="help-block">Cliquez pour télécharger votre fichier. (Max 25MB)</p>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-3 control-label">Type du Papier : </label>
+										<div class="col-lg-9">
+											<select class="form-control" th:field="*{Type}">
+												<option Value="">---------------------</option>
+												<option Value="Remarque des Expertises">Remarque des Expertises</option>
+												<option Value="Publication de Conférence">Publication de Conférence</option>
+												<option Value="Publication du Journal">Publication du Journal</option>
+												<option Value="AUTRE">AUTRE</option>
+											</select>
+										</div>
+									</div> 
+									
+									
+                                
+									<div class="form-group">
+										<div class="col-lg-offset-3 col-lg-9">
+											<input type="submit" class="btn btn-danger submit" value="Ajouter"></input>
+											<input type="reset" class="btn btn-default" Value="Annuler"></input>
+										</div>	
+									</div>
+								</form>
+							</div> <!-- Form page end -->
+							
+						</div> <!-- Page content end -->
+						
+					</div>
+				</div>
+				
+			</div>
+			<!-- Mainbar ends -->
+			
+			<div class="clearfix"></div>
+		</div>
+		
+		<body th:replace="fragments/js :: js"></body>
+		
+	</body>	
+
+</html>

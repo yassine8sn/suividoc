@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+		 <meta charset="UTF-8"/>
+		<title>Login Page</title>
+		<meta name="description" content="Your description"/>
+		<meta name="keywords" content="Your,Keywords"/>
+		<meta name="author" content="ResponsiveWebInc"/>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		<link href="css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="css/font-awesome.min.css" rel="stylesheet"/>	
+		<link href="css/less-style.css" rel="stylesheet"/>	
+		<link href="css/style.css" rel="stylesheet"/>
+		
+		<link rel="shortcut icon" href="#"/>
+	</head>
+	
+	<body>
+
+		<div class="outer-page">
+			
+			 <!-- Login page -->
+			 <div class="login-page">
+
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs nav-justified">
+					  <li class="active"><a href="#login" data-toggle="tab" class="br-lblue"><i class="fa fa-sign-in"></i> SuiviDoc </a></li>
+					</ul>
+
+					<div class="tab-content">
+					  <div class="tab-pane fade active in" id="login">
+					  
+						
+						<form role="form" th:action="@{/login}" th:method="post">
+						 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+						  <div class="form-group">
+							<label for="email">UserName</label>
+							<input type="text" class="form-control" id="login" name="login" placeholder="Login"/>
+						  </div>
+						  <div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" id="password" name="password" placeholder="Password"/>
+						  </div>
+						  <div class="checkbox">
+							<label>
+							  <input type="checkbox" name="remember-me" id="remember-me"/> Remember Me Next Time
+							</label>
+						  </div>
+						  <button type="submit" class="btn btn-info btn-sm">Submit</button>
+						  <button type="reset" class="btn btn-default btn-sm">Reset</button>
+						</form>
+						
+
+							<p th:if="${error.isPresent()}">L'email ou le mot de passe que vous avez entré est incorrect, réessayez.</p>
+					  </div>
+					  
+					  
+					  
+					</div>
+					
+			 </div>	
+			
+		</div>
+		
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/respond.min.js"></script>
+		<script src="js/html5shiv.js"></script>
+		
+		
+      
+        <script type="text/javascript">
+
+		</script>
+		
+	</body>	
+
+</html>
