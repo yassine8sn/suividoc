@@ -12,10 +12,10 @@ password: demo
 ## Technologies utilisées
 SuiviDoc a ete realise avec `SpringBoot` avec les technologies:
 - Front-end
-  -Html
-  -JavaScript
-  -jQuery
-  -Ajax
-  -Twitter Bootstrap
+  - Html
+  - JavaScript
+  - jQuery
+  - Ajax
+  - Twitter Bootstrap
 - Back-end
-  -Java
+  - Java
