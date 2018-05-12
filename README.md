@@ -10,7 +10,7 @@ username: admin
 password: demo
 ```
 ## Technologies utilisées
-SuiviDoc a ete realise avec `SpringBoot` avec les technologies:
+SuiviDoc a été réaliser avec le framework `SpringBoot`, et avec les technologies:
 - Front-end
   - Html
   - JavaScript
